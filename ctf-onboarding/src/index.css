@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0B0E14;
+  --color-panel: #121826;
+  --color-panel-2: #0E1420;
+  --color-line: #232C3D;
+  --color-line-soft: #1A2130;
+  --color-amber: #E8A33D;
+  --color-amber-dim: #8B6425;
+  --color-cyan: #5FB8B8;
+  --color-cyan-dim: #3A6E6E;
+  --color-ok: #6FBF8B;
+  --color-text: #E7E9EE;
+  --color-muted: #8A94A6;
+  --color-faint: #4B5566;
+}
+
+html {
+  background: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+* {
+  scrollbar-color: var(--color-line) var(--color-ink);
+  scrollbar-width: thin;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes flicker {
+  0%, 96%, 100% { opacity: 1; }
+  97% { opacity: 0.85; }
+  98% { opacity: 1; }
+}
+
+.crt-flicker {
+  animation: flicker 6s infinite;
+}
+
+@keyframes blink-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.caret {
+  animation: blink-caret 1s step-end infinite;
+}
