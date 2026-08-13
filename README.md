@@ -97,11 +97,10 @@ platform's beginner filter. Eight of the 27 resources work this way; the other 1
 
 Free-tier availability shifts, so re-check links each semester. Known moving parts:
 
-- **CyLab Security Academy** (`learn.cylabacademy.org/challenge-library`) is the former **picoCTF** — CMU
-  rebranded it in May 2026, and `picoctf.org` / `play.picoctf.org/practice` now only serve a transition
-  notice. Challenge titles carried over from the old picoGym, but per-challenge deep links did not survive
-  the migration, so CyLab challenges intentionally all point at the Challenge Library index and are found by
-  searching the title. A handful may have been renamed.
+- **CyLab Security Academy** (`play.picoctf.org/practice`) is the official practice index for the former
+  **picoCTF** content. Challenge titles carried over from the old picoGym, but per-challenge deep links did
+  not survive the migration, so CyLab challenges intentionally all point at the practice index and are found
+  by searching the title. A handful may have been renamed.
 - **CTFlearn**'s browse URL is `ctflearn.com/challenge/1/browse` (plain `/challenge` 404s), and its live
   category filters are Web, Forensics, Binary, Reverse Engineering, Cryptography, Programming, Miscellaneous
   — there is **no** OSINT or Steganography category, so stego items point at the Forensics filter.

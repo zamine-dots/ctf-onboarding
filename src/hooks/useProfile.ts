@@ -118,6 +118,30 @@ export function useProfile() {
     [activeCallsign]
   );
 
+  /** Bulk check/uncheck — backs the "Mark all" control on ten-item resource lists. */
+  const setMany = useCallback(
+    (challengeIds: string[], value: boolean) => {
+      if (!activeCallsign || challengeIds.length === 0) return;
+      setProfile((prev) => {
+        const base: Profile = prev ?? {
+          callsign: activeCallsign,
+          createdAt: new Date().toISOString(),
+          completed: {},
+        };
+        const completed = { ...base.completed };
+        const now = new Date().toISOString();
+        for (const id of challengeIds) {
+          if (value) completed[id] = completed[id] ?? now;
+          else delete completed[id];
+        }
+        const next = { ...base, completed };
+        saveProfile(next);
+        return next;
+      });
+    },
+    [activeCallsign]
+  );
+
   const resetProgress = useCallback(() => {
     if (!activeCallsign) return;
     const next: Profile = { callsign: activeCallsign, createdAt: new Date().toISOString(), completed: {} };
@@ -167,11 +191,12 @@ export function useProfile() {
       createOrSwitch,
       signOut,
       toggleChallenge,
+      setMany,
       resetProgress,
       exportProgress,
       importProgress,
       isComplete,
     }),
-    [profile, roster, activeCallsign, createOrSwitch, signOut, toggleChallenge, resetProgress, exportProgress, importProgress, isComplete]
+    [profile, roster, activeCallsign, createOrSwitch, signOut, toggleChallenge, setMany, resetProgress, exportProgress, importProgress, isComplete]
   );
 }
