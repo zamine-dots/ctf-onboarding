@@ -1,10 +1,18 @@
-# Sector Zero — IEEE-CS CTF Starting Point (Phase 1)
+# Sector Zero — CTF Learning Dashboard
 
 A self-paced "taste test" app for new IEEE-CS members starting CTF. Members pick a callsign, then work
 through **235 curated beginner challenges** across 8 CTF categories to find out which ones click for them,
 before committing to a specialization in later phases.
 
 Static site — Vite + React + TypeScript + Tailwind v4. No backend, no accounts, no database.
+
+[![CI](https://github.com/zamine-dots/ctf-onboarding/actions/workflows/ci.yml/badge.svg)](https://github.com/zamine-dots/ctf-onboarding/actions/workflows/ci.yml)
+
+[Try Sector Zero](https://ctf-onboarding-nf87-azure.vercel.app)
+
+![Sector Zero dashboard with CTF tracks and local progress](docs/dashboard.jpg)
+
+The interface demonstrates a structured content catalog, interactive checklists, browser persistence, and portable progress backups. The screenshot uses a local demo profile.
 
 ## What it does
 
@@ -36,12 +44,16 @@ Static site — Vite + React + TypeScript + Tailwind v4. No backend, no accounts
 
 ## Local development
 
+Use Node.js 24 LTS (`.nvmrc` is included).
+
 ```bash
-npm install
+npm ci
 npm run dev     # http://localhost:5173
 npm run build   # tsc + vite build → dist/
 npm run lint    # oxlint
 ```
+
+GitHub Actions runs Oxlint, the TypeScript/production build, and a dependency audit. These checks do not verify every external challenge link; availability can change.
 
 ## Deploying to Vercel
 
